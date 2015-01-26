@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="<?php echo WEB_ROOT . '/style.css'; ?>">
+<script src="<?php echo WEB_ROOT . '/script.js'; ?>"></script>
+</head>
+<body>
+Hello, <?php echo $model->name . '<br>' . PROJECT_ROOT . '<br>' . WEB_ROOT . '<br>'; ?>
+<?php
+foreach ($_SERVER as $key => $value) {
+	echo $key . ' => ' . $value . '<br>';
+}
+?>
+</body>
+</html>

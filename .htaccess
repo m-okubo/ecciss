@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+	# 転送を有効にする
+    RewriteEngine On
+    # publicフォルダ以外へのアクセスは転送の対象とする
+    RewriteCond %{REQUEST_URI} !^/ecciss/public(.*)$ [NC,OR]
+    # publicフォルダの実ファイルのみアクセスを許す
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+    # それ以外のリクエストはindex.phpに転送する
+    RewriteRule .* public/index.php [L]
+</IfModule>
