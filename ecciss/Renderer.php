@@ -14,11 +14,11 @@ class Renderer
 
     public function render()
     {
-        $file = dirname(__FILE__) . '/views/index.phtml';
-        if (file_exists($file)) {
-            $this->partial('index.phtml');
-        } else {
+        $layout = $this->model->getLayout();
+        if (empty($layout)) {
             $this->getContent();
+        } else {
+            $this->partial($layout);
         }
     }
 
