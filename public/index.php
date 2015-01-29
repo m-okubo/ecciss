@@ -5,17 +5,13 @@
 try
 {
     // Define constants
-    $project_root = strtr(__FILE__, DIRECTORY_SEPARATOR, '/');
-    $project_root = rtrim($project_root, '/public/index.php');
-    $web_root = rtrim($_SERVER['SCRIPT_NAME'], '/index.php');
-
-    define('PROJECT_ROOT', $project_root);
-    define('WEB_ROOT', $web_root);
+    define('PROJECT_ROOT', dirname(dirname(__FILE__)));
+    define('WEB_ROOT', dirname($_SERVER['SCRIPT_NAME']));
 
     // Load config
     $config_path = '/ecciss/resources/config.ini';
     $config = parse_ini_file(PROJECT_ROOT . $config_path);
-    $config_path = '/ecciss/resources/' . $config['FILE_NAME'];
+    $config_path = dirname($config_path) . '/' . $config['FILE_NAME'];
     $config = parse_ini_file(PROJECT_ROOT . $config_path);
 
     foreach ($config as $key => $value) {
