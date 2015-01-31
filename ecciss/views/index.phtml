@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="<?php echo WEB_ROOT . '/style.css'; ?>">
-<script src="<?php echo WEB_ROOT . '/script.js'; ?>"></script>
+<link rel="stylesheet" href="<?php echo $this->getUrl('style.css'); ?>">
+<script src="<?php echo $this->getUrl('script.js'); ?>"></script>
 </head>
 <body>
 <?php $this->getContent(); ?>

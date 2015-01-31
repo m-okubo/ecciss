@@ -1,12 +1,12 @@
 <?php
 namespace ecciss\models;
 
-class TestModel extends BaseModel
+class WelcomeModel extends BaseModel
 {
     public $name;
 
     public function indexAction()
     {
-        $this->name = 'Taro';
+        $this->name = $_SESSION['login_id'];
     }
 }

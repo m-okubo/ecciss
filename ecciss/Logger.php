@@ -55,6 +55,7 @@ class Logger
         }
 
         $line  = date('Y-m-d H:i:s');
+        $line .= "\t" . $_SERVER['REMOTE_ADDR'];
         $line .= "\t[" . $level_name . "]";
         $line .= "\t" . $message;
         $line .= "\n";

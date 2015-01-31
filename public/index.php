@@ -7,6 +7,7 @@ try
     // Define constants
     define('PROJECT_ROOT', dirname(dirname(__FILE__)));
     define('WEB_ROOT', dirname($_SERVER['SCRIPT_NAME']));
+    define('APP_ROOT', dirname(WEB_ROOT));
 
     // Load config
     $config_path = '/ecciss/resources/config.ini';
@@ -17,6 +18,9 @@ try
     foreach ($config as $key => $value) {
         define($key, $value);
     }
+
+    // Set error level
+    error_reporting(ERROR_LEVEL);
 
     // Set timezone
     date_default_timezone_set(TIMEZONE);

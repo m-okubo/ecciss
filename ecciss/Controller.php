@@ -7,23 +7,17 @@ class Controller
     {
         $dirs = explode('/', trim($_SERVER['REQUEST_URI'], '/'));
         array_shift($dirs);
+        $page = empty($dirs[0]) ? 'login' : $dirs[0];
+        $action = empty($dirs[1]) ? 'index' : $dirs[1];
 
-        if (empty($dirs[0])) {
-            $dirs[0] = 'login';
-        }
-        $model_name  = strtoupper(substr($dirs[0], 0, 1));
-        $model_name .= substr($dirs[0], 1);
+        $model_name  = strtoupper(substr($page, 0, 1));
+        $model_name .= substr($page, 1);
         $model_name .= 'Model';
 
         // Dynamic class name is regarded as a fully qualified name.
         $class_name = '\\ecciss\\models\\' . $model_name;
         $model = new $class_name();
 
-        if (!empty($dirs[1])) {
-            $action = $dirs[1];
-        } else {
-            $action = 'index';
-        }
         $action_name = $action . 'Action';
 
         $log = Logger::getInstance();
@@ -31,9 +25,7 @@ class Controller
         $model->$action_name();
         $log->info($model_name . '->' . $action_name . '() end');
 
-        $view = $dirs[0] . '/' . $action . '.phtml';
-
-        $renderer = new Renderer($model, $view);
+        $renderer = new Renderer($model, $page, $action);
         $renderer->render();
     }
 }

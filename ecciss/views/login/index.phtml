@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<form action="<?php echo $this->getUrl('login/login'); ?>" method="post">
+    <input type="text" name="login_id" value="<?php echo isset($_POST['login_id']) ? $_POST['login_id'] : ''; ?>">
+    <br>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" value="ログイン">
+</form>
+</body>
+</html>

@@ -4,12 +4,21 @@ namespace ecciss;
 class Renderer
 {
     private $model;
+    private $page;
     private $view;
 
-    public function __construct($model, $view)
+    public function __construct($model, $page, $action)
     {
         $this->model = $model;
-        $this->view = $view;
+        $this->page = $page;
+
+        $view = $this->model->getView();
+        if (empty($view)) {
+            $this->view = $page . '/' . $action;
+        } else {
+            $this->view = $view;
+        }
+        $this->view .= '.phtml';
     }
 
     public function render()
@@ -30,5 +39,16 @@ class Renderer
     public function getContent()
     {
         $this->partial($this->view);
+    }
+
+    public function getUrl($url)
+    {
+        if (strpos($url, '.') === false) {
+            $url = APP_ROOT . '/' . $url;
+        } else {
+            $url = WEB_ROOT . '/' . $url;
+        }
+
+        return $url;
     }
 }
