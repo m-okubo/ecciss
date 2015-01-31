@@ -5,6 +5,8 @@ class BaseModel extends \ecciss\Model
 {
     public function __construct()
     {
+        parent::__construct();
+
         // Disable cache
         session_cache_limiter('nocache');
         // Start session

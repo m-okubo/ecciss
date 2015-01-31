@@ -6,11 +6,15 @@ class Renderer
     private $model;
     private $page;
     private $view;
+    private $labels;
+    private $errors;
 
     public function __construct($model, $page, $action)
     {
         $this->model = $model;
         $this->page = $page;
+        $this->labels = $this->model->getLabels();
+        $this->errors = $this->model->getErrors();
 
         $view = $this->model->getView();
         if (empty($view)) {

@@ -6,14 +6,13 @@ try
 {
     // Define constants
     define('PROJECT_ROOT', dirname(dirname(__FILE__)));
+    define('RESOURCES_ROOT', PROJECT_ROOT . '/ecciss/resources');
     define('WEB_ROOT', dirname($_SERVER['SCRIPT_NAME']));
     define('APP_ROOT', dirname(WEB_ROOT));
 
     // Load config
-    $config_path = '/ecciss/resources/config.ini';
-    $config = parse_ini_file(PROJECT_ROOT . $config_path);
-    $config_path = dirname($config_path) . '/' . $config['FILE_NAME'];
-    $config = parse_ini_file(PROJECT_ROOT . $config_path);
+    $config = parse_ini_file(RESOURCES_ROOT . '/config.ini');
+    $config = parse_ini_file(RESOURCES_ROOT . '/' . $config['FILE_NAME']);
 
     foreach ($config as $key => $value) {
         define($key, $value);
