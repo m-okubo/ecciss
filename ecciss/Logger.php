@@ -12,7 +12,8 @@ class Logger
     private $level;
     private $destination;
 
-    public static function getInstance($level = Logger::INFO, $destination = null) {
+    public static function getInstance($level = Logger::INFO, $destination = null)
+    {
         if (empty(self::$log)) {
             if (empty($destination)) {
                 $destination = PROJECT_ROOT . '/ecciss.log';
@@ -23,7 +24,8 @@ class Logger
         return self::$log;
     }
 
-    private function __construct($level, $destination) {
+    private function __construct($level, $destination)
+    {
         $this->level = $level;
         $this->destination = $destination;
     }
